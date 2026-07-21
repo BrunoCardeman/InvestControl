@@ -10,7 +10,7 @@ class Atualizacao(Base):
     investimento_id: Mapped[int] = mapped_column(ForeignKey("investimentos.id"), nullable=False)
     valor_atual: Mapped[float] = mapped_column()
     aporte: Mapped[float] = mapped_column()
-    rentabilidade: Mapped[float] = mapped_column()
+    rendimento: Mapped[float] = mapped_column()
     data_Ultima_Atualizacao: Mapped[str] = mapped_column()
     
     investimentos: Mapped["Investimento"] = relationship(back_populates="atualizacoes")

@@ -12,6 +12,7 @@ class Investimento(Base):
     categoria_id: Mapped[int] = mapped_column(ForeignKey("categorias.id"), nullable=False)
     valor_investimento: Mapped[float] = mapped_column()
     valor_atual: Mapped[float] = mapped_column()
+    rendimento_Atual: Mapped[float] = mapped_column()
     rentabilidade_Atual: Mapped[float] = mapped_column()
     data_Ultima_Atualizacao: Mapped[str] = mapped_column()
     dataCriacao: Mapped[str] = mapped_column()

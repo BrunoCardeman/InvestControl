@@ -1,24 +1,12 @@
 from app.models.atualizacao import Atualizacao
+from app.repositories.repository import BaseRepository
 
-class AtualizacaoRepository:
+
+class AtualizacaoRepository(BaseRepository[Atualizacao]):
 
     def __init__(self, session):
-        self.session = session
+        super().__init__(session, Atualizacao)
 
     def listar_por_investimento(self, investimento_id):
         return self.session.query(Atualizacao).filter(Atualizacao.investimento_id == investimento_id).all()
     
-    def buscar_por_id(self, id_atualizacao):
-        return self.session.get(Atualizacao, id_atualizacao)
-
-    def adicionar_Atualizacao(self, atualizacao):
-        self.session.add(atualizacao)
-        self.session.flush()
-        return atualizacao
-    
-    def remover_Atualizacao(self, id_atualizacao):
-        obj_Atualizacao = self.buscar_por_id(id_atualizacao)
-        if obj_Atualizacao is None:
-            return False
-        self.session.delete(obj_Atualizacao)
-        self.session.flush()
